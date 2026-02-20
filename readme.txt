@@ -43,3 +43,4 @@ Edit the files at `assets/css/custom.css` and `assets/js/custom.js` inside the p
 * Time-based admin bar greeting (replaces "Howdy,")
 * oEmbed author info removal
 * Custom CSS and JS enqueuing with cache-busting
+* Facebook-style developer console warning
