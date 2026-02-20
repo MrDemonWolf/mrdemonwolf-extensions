@@ -36,6 +36,15 @@ Currently all features are enabled by default. To disable one, comment out or re
 
 Edit the files at `assets/css/custom.css` and `assets/js/custom.js` inside the plugin folder. Changes are cache-busted automatically.
 
+== Screenshots ==
+
+No screenshots available yet.
+
+== Upgrade Notices ==
+
+= 1.0.0 =
+Initial release.
+
 == Changelog ==
 
 = 1.0.0 =
@@ -43,3 +52,4 @@ Edit the files at `assets/css/custom.css` and `assets/js/custom.js` inside the p
 * Time-based admin bar greeting (replaces "Howdy,")
 * oEmbed author info removal
 * Custom CSS and JS enqueuing with cache-busting
+* Facebook-style developer console warning

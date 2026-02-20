@@ -4,6 +4,7 @@
  *
  * Strips author information from oEmbed response data.
  *
+ * @since   1.0.0
  * @package MrDemonWolf_Extensions
  */
 
@@ -15,9 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Remove author info from oEmbed responses.
  *
- * @param array  $data The oEmbed response data.
- * @param string $url  The requested URL.
- * @param array  $args Additional arguments.
+ * @since 1.0.0
+ *
+ * @param array   $data The oEmbed response data.
+ * @param string  $url  The requested URL.
+ * @param WP_Post $post The post object.
  * @return array Filtered response data.
  */
 function mrdemonwolf_filter_oembed_response_data( $data, $url, $args ) {
