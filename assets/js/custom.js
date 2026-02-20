@@ -3,6 +3,7 @@
  */
 
 (function () {
+  'use strict';
   if (typeof console === 'undefined') {
     return;
   }
