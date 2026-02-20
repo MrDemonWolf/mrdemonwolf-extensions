@@ -5,6 +5,7 @@
  * Replaces the default "Howdy," greeting in the WordPress admin bar
  * with a time-based greeting (Good morning/afternoon/evening).
  *
+ * @since   1.0.0
  * @package MrDemonWolf_Extensions
  */
 
@@ -16,28 +17,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Replace the "Howdy," greeting with a time-based greeting.
  *
+ * @since 1.0.0
+ *
  * @param WP_Admin_Bar $wp_admin_bar The admin bar instance.
  */
 function mrdemonwolf_replace_howdy( $wp_admin_bar ) {
-	$hour = (int) date( 'G' );
-	$msg  = '';
+	$hour = (int) wp_date( 'G' );
 
 	if ( $hour >= 5 && $hour <= 11 ) {
-		$msg = 'Good morning,';
+		$greeting = esc_html__( 'Good morning,', 'mrdemonwolf-extensions' );
 	} elseif ( $hour >= 12 && $hour <= 18 ) {
-		$msg = 'Good afternoon,';
-	} elseif ( $hour >= 19 || $hour <= 4 ) {
-		$msg = 'Good evening,';
+		$greeting = esc_html__( 'Good afternoon,', 'mrdemonwolf-extensions' );
+	} else {
+		$greeting = esc_html__( 'Good evening,', 'mrdemonwolf-extensions' );
 	}
 
 	$my_account = $wp_admin_bar->get_node( 'my-account' );
 
-	if ( $my_account && isset( $my_account->title ) ) {
-		$new_title = str_replace( 'Howdy,', $msg, $my_account->title );
+	if ( $my_account ) {
+		$display_name = wp_get_current_user()->display_name;
 		$wp_admin_bar->add_node( array(
 			'id'    => 'my-account',
-			'title' => $new_title,
+			'title' => $greeting . ' ' . esc_html( $display_name ),
 		) );
 	}
 }
-add_filter( 'admin_bar_menu', 'mrdemonwolf_replace_howdy', 9992 );
+// Priority 9992: run after WordPress core (priority 0) and most plugins so the greeting is not overwritten.
+add_action( 'admin_bar_menu', 'mrdemonwolf_replace_howdy', 9992 );
